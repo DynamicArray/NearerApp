@@ -1,0 +1,10 @@
+{
+  "name": "NearerApp",
+  "displayName": "Nearer",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-0830035448849994~4512177576",
+    "ios_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx",
+    "delay_app_measurement_init": true,
+    "user_tracking_usage_description": "This identifier will be used to deliver personalized ads to you."
+  }
+}
