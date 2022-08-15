@@ -1,10 +1,13 @@
+import React from 'react';
 import {Platform} from 'react-native';
+import {useAtom} from 'jotai';
 import mobileAds, {
   AppOpenAd,
   TestIds,
   InterstitialAd,
-  MaxAdContentRating,
 } from 'react-native-google-mobile-ads';
+import {BannerAd, BannerAdSize} from 'react-native-google-mobile-ads';
+import {trackingAtom} from './state';
 
 export const bannerUnitId = () => {
   let id = '';
@@ -46,12 +49,29 @@ export const openUnitId = () => {
   return id;
 };
 
-export const interstitial = (keywords = []) =>
-  InterstitialAd.createForAdRequest(interstitualUnitId(), {
-    requestNonPersonalizedAdsOnly: true,
+export const interstitial = (keywords = [], tracking) => {
+  return InterstitialAd.createForAdRequest(interstitualUnitId(), {
+    requestNonPersonalizedAdsOnly: tracking,
     keywords: keywords,
   });
+};
 
-export const appOpenAd = AppOpenAd.createForAdRequest(openUnitId(), {
-  requestNonPersonalizedAdsOnly: false,
-});
+export const appOpenAd = () => {
+  return AppOpenAd.createForAdRequest(openUnitId(), {
+    requestNonPersonalizedAdsOnly: false,
+  });
+};
+
+export const Banner = ({keywords}) => {
+  const [tracking] = useAtom(trackingAtom);
+  return (
+    <BannerAd
+      unitId={bannerUnitId()}
+      size={BannerAdSize.FULL_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: tracking,
+        keywords: keywords,
+      }}
+    />
+  );
+};

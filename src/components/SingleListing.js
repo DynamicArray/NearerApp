@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View, Image, Linking, ScrollView} from 'react-native';
-import {windowWidth, calculateHours, getOpeningColours} from '../functions';
+import {
+  windowWidth,
+  calculateHours,
+  getOpeningColours,
+  Banner,
+} from '../functions';
 import {Icons, ListingTimetable, CategoryLink} from '../components';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export const SingleListing = ({route, navigation}) => {
   const [listing] = useState(route.params.listing);
@@ -12,6 +18,11 @@ export const SingleListing = ({route, navigation}) => {
   const NearerIcon = Icons['nearer'];
   const MapIcon = Icons['map'];
   const [hours, setHours] = useState(calculateHours(listing.open));
+  const [keywords] = useState(() => {
+    words = [];
+    listing.categories.forEach(cat => words.push(cat.name));
+    return words;
+  });
 
   setInterval(() => {
     setHours(calculateHours(listing.open));
@@ -106,7 +117,7 @@ export const SingleListing = ({route, navigation}) => {
               </View>
               <Text style={{color: '#1c1c1e'}}>{listing.address}</Text>
             </View>
-            <View
+            <TouchableOpacity
               style={{
                 marginBottom: 15,
                 backgroundColor: '#0078a8',
@@ -114,20 +125,21 @@ export const SingleListing = ({route, navigation}) => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                width: 130,
+                width: 150,
                 borderRadius: 2,
                 padding: 5,
               }}
-              onPress={() =>
+              onPress={() => {
+                console.log('Press');
                 Linking.openURL(
                   `https://www.google.com/maps/dir/?api=1&destination=${encodeURI(
                     listing.address,
                   )}`,
-                )
-              }>
+                );
+              }}>
               <MapIcon color="#fff" height={20} width={20} />
               <Text style={{color: '#fff'}}>Get Directions</Text>
-            </View>
+            </TouchableOpacity>
           </>
         ) : null}
         {listing.phone ? (
@@ -198,6 +210,7 @@ export const SingleListing = ({route, navigation}) => {
             ))
           : null}
       </View>
+      <Banner keywords={keywords} />
       <Text
         style={{
           fontSize: 13,

@@ -1,6 +1,8 @@
+import {Platform} from 'react-native';
 import {atom} from 'jotai';
 import {arrayToggle, interstitial} from '../functions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getTrackingStatus} from 'react-native-tracking-transparency';
 
 export const showFromMarker = atom(false);
 
@@ -15,6 +17,8 @@ export const showOnlyOpen = atom(false);
 export const savedCategories = atom(null);
 
 export const actionCount = atom(0);
+
+export const trackingAtom = atom(allowTracking);
 
 export const updateActions = setter => {
   setter(count => {
@@ -39,4 +43,14 @@ const storeCategories = async categories => {
     'feed_chosen_categories',
     categories ? JSON.stringify(categories) : JSON.stringify([]),
   );
+};
+
+const allowTracking = async () => {
+  let status = false;
+  if (Platform.OS === 'ios') {
+    const trackingStatus = await getTrackingStatus();
+    status =
+      trackingStatus === 'authorized' || trackingStatus === 'unavailable';
+  }
+  return status;
 };

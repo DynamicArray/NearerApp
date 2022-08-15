@@ -1,12 +1,13 @@
 import React from 'react';
 import Svg, {Path, Polygon} from 'react-native-svg';
+import {windowWidth, windowHeight} from '../functions';
 
 const IconBars = ({color = '#fff'}) => {
   return (
     <Svg
       style={{color: color, marginLeft: 'auto'}}
-      height="15"
-      width="15"
+      height="15vw"
+      width="15vw"
       viewBox="0 0 448 512">
       <Path
         fill="currentColor"
@@ -18,7 +19,11 @@ const IconBars = ({color = '#fff'}) => {
 
 const IconCompass = ({color = '#fff'}) => {
   return (
-    <Svg style={{color: color}} height="50%" width="25%" viewBox="0 0 496 512">
+    <Svg
+      style={{color: color}}
+      height={windowHeight * 0.04}
+      width={windowHeight * 0.04}
+      viewBox="0 0 496 512">
       <Path
         fill="currentColor"
         d="M347.94 129.86L203.6 195.83a31.938 31.938 0 0 0-15.77 15.77l-65.97 144.34c-7.61 16.65 9.54 33.81 26.2 26.2l144.34-65.97a31.938 31.938 0 0 0 15.77-15.77l65.97-144.34c7.61-16.66-9.54-33.81-26.2-26.2zm-77.36 148.72c-12.47 12.47-32.69 12.47-45.16 0-12.47-12.47-12.47-32.69 0-45.16 12.47-12.47 32.69-12.47 45.16 0 12.47 12.47 12.47 32.69 0 45.16zM248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 448c-110.28 0-200-89.72-200-200S137.72 56 248 56s200 89.72 200 200-89.72 200-200 200z"
@@ -29,7 +34,11 @@ const IconCompass = ({color = '#fff'}) => {
 
 const IconHome = ({color = '#fff'}) => {
   return (
-    <Svg style={{color: color}} height="50%" width="25%" viewBox="0 0 576 512">
+    <Svg
+      style={{color: color}}
+      height={windowHeight * 0.04}
+      width={windowHeight * 0.04}
+      viewBox="0 0 576 512">
       <Path
         fill="currentColor"
         d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
@@ -40,7 +49,11 @@ const IconHome = ({color = '#fff'}) => {
 
 const IconInfo = ({color = '#fff'}) => {
   return (
-    <Svg style={{color: color}} height="50%" width="25%" viewBox="0 0 512 512">
+    <Svg
+      style={{color: color}}
+      height={windowHeight * 0.04}
+      width={windowHeight * 0.04}
+      viewBox="0 0 512 512">
       <Path
         fill="currentColor"
         d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
@@ -200,12 +213,12 @@ const IconWebsite = () => {
   );
 };
 
-const IconMap = ({color, height = '50%', width = '50%'}) => {
+const IconMap = ({color}) => {
   return (
     <Svg
       style={{color: color}}
-      height={height}
-      width={width}
+      height={windowHeight * 0.04}
+      width={windowHeight * 0.04}
       viewBox="0 0 576 512">
       <Path
         fill="currentColor"

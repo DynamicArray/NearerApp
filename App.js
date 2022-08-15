@@ -1,5 +1,5 @@
 import React, {Suspense, useEffect} from 'react';
-import SplashScreen from 'react-native-splash-screen';
+
 import {ActivityIndicator, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -20,7 +20,6 @@ const Tab = createBottomTabNavigator();
 
 const App = () => {
   initAds();
-  SplashScreen.hide();
   const HomeIcon = Icons['home'];
   const InfoIcon = Icons['info'];
   const CompassIcon = Icons['compass'];

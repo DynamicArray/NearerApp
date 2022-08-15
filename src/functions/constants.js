@@ -27,6 +27,8 @@ export const inputStyle = {
 export const tabOptions = {
   tabBarStyle: {
     backgroundColor: style.colours.card,
+    height: '10%',
+    width: '100%',
   },
   headerStyle: {
     backgroundColor: style.colours.primary,

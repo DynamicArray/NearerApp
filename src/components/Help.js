@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {Text, ScrollView, Linking, View} from 'react-native';
 import {Icons} from '../components';
 import {getOpeningColours} from '../functions';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export const Help = ({navigation}) => {
   const IconEmail = Icons['email'];
@@ -28,7 +29,7 @@ export const Help = ({navigation}) => {
       <Text style={{fontWeight: 'bold', marginBottom: 10, color: '#1c1c1e'}}>
         About
       </Text>
-      <View
+      <TouchableOpacity
         style={{
           padding: 5,
           marginBottom: 5,
@@ -41,10 +42,10 @@ export const Help = ({navigation}) => {
           width: 150,
           borderRadius: 2,
         }}
-        onPress={() => Linking.openURL('mailto:no-reply@nearer.com')}>
+        onPress={() => Linking.openURL('https://nearer.com/contact-us')}>
         <IconEmail />
         <Text style={{color: '#fff'}}>Send Us Feedback</Text>
-      </View>
+      </TouchableOpacity>
       <Text style={{marginBottom: 25, color: '#1c1c1e'}}>
         nearer.com was created by two of the founders of{' '}
         <Text
@@ -89,6 +90,10 @@ export const Help = ({navigation}) => {
         place. Local search is going hyperlocal. This site as you see it now is
         just a start. Please enjoy it - and watch this space.
       </Text>
+      <Text style={{marginBottom: 5, color: '#cd3144'}}>
+        * Note: Owing to temporary closures normal business hours as displayed
+        in this app may not accurately reflect current opening times.
+      </Text>
       <Text
         style={{marginBottom: 5, color: '#cd3144'}}
         onPress={() => Linking.openURL('https://nearer.com')}>
@@ -108,7 +113,7 @@ export const Help = ({navigation}) => {
         Publishing
       </Text>
       <Text style={{marginBottom: 5, marginTop: 5, color: '#1c1c1e'}}>
-        App Version 1.0.8
+        App Version 1.0.9
       </Text>
     </ScrollView>
   );
@@ -137,7 +142,12 @@ const LegendItem = ({label, hours = null}) => {
         }}>
         <OpenIcon />
       </View>
-      <Text>{label}</Text>
+      <Text
+        style={{
+          color: '#1c1c1e',
+        }}>
+        {label}
+      </Text>
     </View>
   );
 };

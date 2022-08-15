@@ -2,7 +2,9 @@ import {useEffect} from 'react';
 import {Alert, Linking, PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import {useAtom} from 'jotai';
+import SplashScreen from 'react-native-splash-screen';
 import {showFromMarker, userLocation} from '../functions';
+import {requestTrackingPermission} from 'react-native-tracking-transparency';
 
 const hasPermissionIOS = async () => {
   const status = await Geolocation.requestAuthorization('whenInUse');
@@ -32,6 +34,8 @@ const hasPermissionIOS = async () => {
 const hasLocationPermission = async () => {
   let hasPermission = false;
   if (Platform.OS === 'ios') {
+    SplashScreen.hide();
+    await requestTrackingPermission();
     hasPermission = await hasPermissionIOS();
   } else if (Platform.OS === 'android') {
     if (Platform.Version < 23) {

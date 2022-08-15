@@ -23,6 +23,7 @@ export const getListings = async (
       },
     ).then(result => {
       setter(result.result);
+      SplashScreen.hide();
     });
   }
 };
